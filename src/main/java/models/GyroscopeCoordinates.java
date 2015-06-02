@@ -57,4 +57,11 @@ public class GyroscopeCoordinates {
 				&& Objects.equals(getY(), ((GyroscopeCoordinates) obj).getY())
 				&& Objects.equals(getZ(), ((GyroscopeCoordinates) obj).getZ());
 	}
+	
+	@Override
+	public String toString() {
+		return "x: " + x + " y: " + y + " z: " + z;
+	}
+	
+	
 }

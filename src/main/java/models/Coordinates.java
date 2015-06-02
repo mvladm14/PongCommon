@@ -49,4 +49,9 @@ public class Coordinates {
 				&& Objects.equals(getX(), ((Coordinates) obj).getX())
 				&& Objects.equals(getY(), ((Coordinates) obj).getY());
 	}
+	
+	@Override
+	public String toString() {
+		return "x: " + x + " y: " + y;
+	}
 }
