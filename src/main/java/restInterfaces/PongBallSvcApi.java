@@ -2,7 +2,7 @@ package restInterfaces;
 
 import java.util.Collection;
 
-import models.Coordinates;
+import models.BallCoordinates;
 import models.PongBall;
 import retrofit.http.Body;
 import retrofit.http.GET;
@@ -22,10 +22,10 @@ public interface PongBallSvcApi {
 	public PongBall addPongBall(@Body PongBall pongBall);
 
 	@GET(PONG_BALL_PATH)
-	public Coordinates getCoordinates(@Path(ID_PARAMETER) long id);
+	public BallCoordinates getCoordinates(@Path(ID_PARAMETER) long id);
 
 	@POST(PONG_BALL_PATH)
-	public Coordinates setCoordinates(@Path(ID_PARAMETER) long id,
-			@Body Coordinates coordinates);
+	public BallCoordinates setCoordinates(@Path(ID_PARAMETER) long id,
+			@Body BallCoordinates coordinates);
 
 }

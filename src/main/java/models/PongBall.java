@@ -8,7 +8,7 @@ import com.fluentinterface.builder.Builder;
 public class PongBall {
 
 	private long id;
-	private Coordinates coordinates;
+	private BallCoordinates coordinates;
 	private int diameter;
 
 	public static PongBallBuilder create() {
@@ -22,7 +22,7 @@ public class PongBall {
 
 		public PongBallBuilder withDiameter(int diameter);
 
-		public PongBallBuilder withCoordinates(Coordinates coordinates);
+		public PongBallBuilder withCoordinates(BallCoordinates coordinates);
 	}
 
 	public long getId() {
@@ -33,11 +33,11 @@ public class PongBall {
 		this.id = id;
 	}
 
-	public Coordinates getCoordinates() {
+	public BallCoordinates getCoordinates() {
 		return coordinates;
 	}
 
-	public void setCoordinates(Coordinates coordinates) {
+	public void setCoordinates(BallCoordinates coordinates) {
 		this.coordinates = coordinates;
 	}
 

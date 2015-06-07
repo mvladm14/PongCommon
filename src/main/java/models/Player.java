@@ -9,7 +9,7 @@ public class Player {
 
 	private long id;
 	private String username;
-	private GyroscopeCoordinates gyroscopeCoordinates;
+	private PhoneCoordinates phoneCoordinates;
 
 	public static PlayerBuilder create() {
 		return ReflectionBuilder.implementationFor(PlayerBuilder.class)
@@ -19,19 +19,19 @@ public class Player {
 	public interface PlayerBuilder extends Builder<Player> {
 		public PlayerBuilder withUsername(String username);
 
-		public PlayerBuilder withGyroscopeCoordinates(
-				GyroscopeCoordinates gyroscopeCoordinates);
+		public PlayerBuilder withPhoneCoordinates(
+				PhoneCoordinates phoneCoordinates);
 		
 		public PlayerBuilder withId(long id);
 	}
 
-	public GyroscopeCoordinates getGyroscopeCoordinates() {
-		return gyroscopeCoordinates;
+	public PhoneCoordinates getPhoneCoordinates() {
+		return phoneCoordinates;
 	}
 
-	public void setGyroscopeCoordinates(
-			GyroscopeCoordinates gyroscopeCoordinates) {
-		this.gyroscopeCoordinates = gyroscopeCoordinates;
+	public void setPhoneCoordinates(
+			PhoneCoordinates phoneCoordinates) {
+		this.phoneCoordinates = phoneCoordinates;
 	}
 
 	public long getId() {
@@ -52,14 +52,14 @@ public class Player {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(getUsername(), getGyroscopeCoordinates());
+		return Objects.hash(getUsername(), getPhoneCoordinates());
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		return (obj instanceof GyroscopeCoordinates)
+		return (obj instanceof PhoneCoordinates)
 				&& Objects.equals(getUsername(), ((Player) obj).getUsername())
-				&& Objects.equals(getGyroscopeCoordinates(),
-						((Player) obj).getGyroscopeCoordinates());
+				&& Objects.equals(getPhoneCoordinates(),
+						((Player) obj).getPhoneCoordinates());
 	}
 }

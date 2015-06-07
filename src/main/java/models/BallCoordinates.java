@@ -5,7 +5,7 @@ import java.util.Objects;
 import com.fluentinterface.ReflectionBuilder;
 import com.fluentinterface.builder.Builder;
 
-public class Coordinates {
+public class BallCoordinates {
 
 	private int x;
 	private int y;
@@ -15,7 +15,7 @@ public class Coordinates {
 				.create();
 	}
 
-	public interface CoordinatesBuilder extends Builder<Coordinates> {
+	public interface CoordinatesBuilder extends Builder<BallCoordinates> {
 
 		public CoordinatesBuilder withX(int x);
 
@@ -45,9 +45,9 @@ public class Coordinates {
 
 	@Override
 	public boolean equals(Object obj) {
-		return (obj instanceof Coordinates)
-				&& Objects.equals(getX(), ((Coordinates) obj).getX())
-				&& Objects.equals(getY(), ((Coordinates) obj).getY());
+		return (obj instanceof BallCoordinates)
+				&& Objects.equals(getX(), ((BallCoordinates) obj).getX())
+				&& Objects.equals(getY(), ((BallCoordinates) obj).getY());
 	}
 	
 	@Override

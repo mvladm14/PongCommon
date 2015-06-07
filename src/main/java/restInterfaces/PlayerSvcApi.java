@@ -2,7 +2,7 @@ package restInterfaces;
 
 import java.util.Collection;
 
-import models.GyroscopeCoordinates;
+import models.PhoneCoordinates;
 import models.Player;
 import retrofit.http.Body;
 import retrofit.http.GET;
@@ -42,7 +42,7 @@ public interface PlayerSvcApi {
 	 * @return
 	 */
 	@GET(PONG_PLAYER_PATH)
-	public GyroscopeCoordinates getGyroscopeCoordinates(
+	public PhoneCoordinates getPhoneCoordinates(
 			@Path(ID_PARAMETER) long id);
 
 	/**
@@ -53,7 +53,7 @@ public interface PlayerSvcApi {
 	 * @return
 	 */
 	@POST(PONG_PLAYER_PATH)
-	public GyroscopeCoordinates setGyroscopeCoordinates(
-			@Path(ID_PARAMETER) long id, @Body GyroscopeCoordinates gv);
+	public PhoneCoordinates setPhoneCoordinates(
+			@Path(ID_PARAMETER) long id, @Body PhoneCoordinates gv);
 
 }
