@@ -2,8 +2,8 @@ package restInterfaces;
 
 import java.util.Collection;
 
-import models.BallCoordinates;
-import models.PongBall;
+import models.ball.BallCoordinates;
+import models.ball.PongBall;
 import retrofit.http.Body;
 import retrofit.http.GET;
 import retrofit.http.POST;

@@ -1,4 +1,4 @@
-package models;
+package models.ball;
 
 import java.util.Objects;
 
@@ -10,6 +10,7 @@ public class PongBall {
 	private long id;
 	private BallCoordinates coordinates;
 	private int diameter;
+	private BallSpeed ballSpeed;
 
 	public static PongBallBuilder create() {
 		return ReflectionBuilder.implementationFor(PongBallBuilder.class)
@@ -17,12 +18,14 @@ public class PongBall {
 	}
 
 	public interface PongBallBuilder extends Builder<PongBall> {
-		
+
 		public PongBallBuilder withId(long id);
 
 		public PongBallBuilder withDiameter(int diameter);
 
 		public PongBallBuilder withCoordinates(BallCoordinates coordinates);
+
+		public PongBallBuilder withBallSpeed(BallSpeed ballSpeed);
 	}
 
 	public long getId() {
@@ -31,6 +34,14 @@ public class PongBall {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public BallSpeed getBallSpeed() {
+		return ballSpeed;
+	}
+
+	public void setBallSpeed(BallSpeed ballSpeed) {
+		this.ballSpeed = ballSpeed;
 	}
 
 	public BallCoordinates getCoordinates() {
