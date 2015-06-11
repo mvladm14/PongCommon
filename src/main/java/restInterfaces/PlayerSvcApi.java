@@ -3,6 +3,7 @@ package restInterfaces;
 import java.util.Collection;
 
 import models.phone.Accelerometer;
+import models.phone.Gravity;
 import models.phone.MagneticField;
 import models.phone.PhoneSensors;
 import models.player.Player;
@@ -19,8 +20,9 @@ public interface PlayerSvcApi {
 	public static final String PLAYER_ACCELEROMETER = PONG_PLAYER_PATH
 			+ "accelerometer/";
 	public static final String PLAYER_MAGNETIC = PONG_PLAYER_PATH + "magnetic/";
+	public static final String PLAYER_GRAVITY = PONG_PLAYER_PATH + "gravity/";
 	public static final String TIME_STAMP = PONG_PLAYER_PATH + "timestamp/";
-	
+
 	/**
 	 * This endpoint in the API returns the players that have been added to the
 	 * server. The Player objects should be returned as JSON.
@@ -73,11 +75,16 @@ public interface PlayerSvcApi {
 	@POST(PLAYER_MAGNETIC)
 	public MagneticField setMagnetic(@Path(ID_PARAMETER) long id,
 			@Body MagneticField magneticField);
-	
+
+	@GET(PLAYER_GRAVITY)
+	public Gravity getGravity(@Path(ID_PARAMETER) long id);
+
+	@POST(PLAYER_GRAVITY)
+	public Gravity setGravity(@Path(ID_PARAMETER) long id, @Body Gravity gravity);
+
 	@GET(TIME_STAMP)
 	public long getTimeStamp(@Path(ID_PARAMETER) long id);
 
 	@POST(TIME_STAMP)
-	public long setTimeStamp(@Path(ID_PARAMETER) long id,
-			@Body long timestamp);
+	public long setTimeStamp(@Path(ID_PARAMETER) long id, @Body long timestamp);
 }

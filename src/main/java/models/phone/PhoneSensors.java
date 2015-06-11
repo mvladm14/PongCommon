@@ -9,6 +9,7 @@ public class PhoneSensors {
 
 	private Accelerometer accelerometer;
 	private MagneticField magneticField;
+	private Gravity gravity;
 	private long sensorTimeStamp;
 
 	public static PhoneSensorsBuilder create() {
@@ -22,6 +23,8 @@ public class PhoneSensors {
 		public PhoneSensorsBuilder withMagneticField(MagneticField magneticField);
 
 		public PhoneSensorsBuilder withSensorTimeStamp(long sensorTimeStamp);
+
+		public PhoneSensorsBuilder withGravity(Gravity gravity);
 	}
 
 	public long getSensorTimeStamp() {
@@ -48,10 +51,18 @@ public class PhoneSensors {
 		this.magneticField = magneticField;
 	}
 
+	public Gravity getGravity() {
+		return gravity;
+	}
+
+	public void setGravity(Gravity gravity) {
+		this.gravity = gravity;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(getSensorTimeStamp(), getAccelerometer(),
-				getMagneticField());
+				getMagneticField(), getGravity());
 	}
 
 	@Override
@@ -62,6 +73,8 @@ public class PhoneSensors {
 				&& Objects.equals(getAccelerometer(),
 						((PhoneSensors) obj).getAccelerometer())
 				&& Objects.equals(getMagneticField(),
-						((PhoneSensors) obj).getMagneticField());
+						((PhoneSensors) obj).getMagneticField())
+				&& Objects.equals(getGravity(),
+						((PhoneSensors) obj).getGravity());
 	}
 }
