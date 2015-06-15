@@ -1,11 +1,10 @@
 package models.player;
 
 public class Pallet {
-	/* coefficient of restitution */
-	private static final float COR = 0.7f;
 
 	private Coordinates coordinates;
 	private Dimension dimension;
+	private static final float MAX_DEGREE = 90f;
 
 	public Pallet(Coordinates coordinates, Dimension dimension) {
 		this.coordinates = coordinates;
@@ -13,13 +12,18 @@ public class Pallet {
 	}
 
 	public void updatePosition(float y, long timestamp) {
-		long quotent = 100000000000000l;
-		long timeDifference = System.nanoTime() - timestamp;
-		long dt = (System.nanoTime() - timestamp) / quotent;
-		System.out.println("y = " + y + " ---- dt = " + dt);
-		int yCoordinates = coordinates.getY();
-		yCoordinates += y / 4;
+		float yCoordinates = coordinates.getY();
+		yCoordinates += y;
 		coordinates.setY(yCoordinates);
+	}
+
+	public void updatePosition(float[] orientation) {
+		float xOrientation = orientation[0] > 0 ? -1f : 1f;
+		float y = this.getCoordinates().getY()
+				+ ((MAX_DEGREE - Math.abs(orientation[1])) * xOrientation)
+				/ 100f;
+		this.getCoordinates().setY(y);
+
 	}
 
 	public Coordinates getCoordinates() {
@@ -36,5 +40,24 @@ public class Pallet {
 
 	public void setDimension(Dimension dimension) {
 		this.dimension = dimension;
+	}
+
+	@Override
+	public String toString() {
+		return "[Pallet]: " + coordinates.toString() + " "
+				+ dimension.toString();
+	}
+
+	public void resolveCollisionWithBounds(Screen screen) {
+		if (this.getCoordinates().getY() < 0) {
+			this.getCoordinates().setY(0);
+		}
+
+		if (this.getCoordinates().getY() + this.getDimension().getHeight() > screen
+				.getHeight()) {
+			this.getCoordinates().setY(
+					screen.getHeight() - this.getDimension().getHeight());
+		}
+
 	}
 }

@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import models.phone.Accelerometer;
 import models.phone.Gravity;
+import models.phone.LinearAcceleration;
 import models.phone.MagneticField;
 import models.phone.PhoneSensors;
 import models.player.Player;
@@ -22,6 +23,8 @@ public interface PlayerSvcApi {
 	public static final String PLAYER_MAGNETIC = PONG_PLAYER_PATH + "magnetic/";
 	public static final String PLAYER_GRAVITY = PONG_PLAYER_PATH + "gravity/";
 	public static final String TIME_STAMP = PONG_PLAYER_PATH + "timestamp/";
+	public static final String PLAYER_LINEAR_ACCELERATION = PONG_PLAYER_PATH
+			+ "linear_acceleration/";
 
 	/**
 	 * This endpoint in the API returns the players that have been added to the
@@ -81,6 +84,14 @@ public interface PlayerSvcApi {
 
 	@POST(PLAYER_GRAVITY)
 	public Gravity setGravity(@Path(ID_PARAMETER) long id, @Body Gravity gravity);
+
+	@GET(PLAYER_LINEAR_ACCELERATION)
+	public LinearAcceleration getLinearAcceleration(@Path(ID_PARAMETER) long id);
+
+	@POST(PLAYER_LINEAR_ACCELERATION)
+	public LinearAcceleration setLinearAcceleration(
+			@Path(ID_PARAMETER) long id,
+			@Body LinearAcceleration linearAcceleration);
 
 	@GET(TIME_STAMP)
 	public long getTimeStamp(@Path(ID_PARAMETER) long id);

@@ -6,7 +6,7 @@ import com.fluentinterface.builder.Builder;
 public class BallSpeed {
 
 	private int deltaX = -1;
-	private int deltaY = 3;
+	private int deltaY = 1;
 
 	public static BallSpeedBuilder create() {
 		return ReflectionBuilder.implementationFor(BallSpeedBuilder.class)

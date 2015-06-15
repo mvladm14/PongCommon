@@ -10,6 +10,7 @@ public class PhoneSensors {
 	private Accelerometer accelerometer;
 	private MagneticField magneticField;
 	private Gravity gravity;
+	private LinearAcceleration linearAcceleration;
 	private long sensorTimeStamp;
 
 	public static PhoneSensorsBuilder create() {
@@ -25,6 +26,17 @@ public class PhoneSensors {
 		public PhoneSensorsBuilder withSensorTimeStamp(long sensorTimeStamp);
 
 		public PhoneSensorsBuilder withGravity(Gravity gravity);
+
+		public PhoneSensorsBuilder withLinearAcceleration(
+				LinearAcceleration linearAcceleration);
+	}
+
+	public LinearAcceleration getLinearAcceleration() {
+		return linearAcceleration;
+	}
+
+	public void setLinearAcceleration(LinearAcceleration linearAcceleration) {
+		this.linearAcceleration = linearAcceleration;
 	}
 
 	public long getSensorTimeStamp() {
@@ -62,7 +74,7 @@ public class PhoneSensors {
 	@Override
 	public int hashCode() {
 		return Objects.hash(getSensorTimeStamp(), getAccelerometer(),
-				getMagneticField(), getGravity());
+				getMagneticField(), getGravity(), getLinearAcceleration());
 	}
 
 	@Override
@@ -74,6 +86,8 @@ public class PhoneSensors {
 						((PhoneSensors) obj).getAccelerometer())
 				&& Objects.equals(getMagneticField(),
 						((PhoneSensors) obj).getMagneticField())
+				&& Objects.equals(getLinearAcceleration(),
+						((PhoneSensors) obj).getLinearAcceleration())
 				&& Objects.equals(getGravity(),
 						((PhoneSensors) obj).getGravity());
 	}
