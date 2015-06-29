@@ -2,9 +2,6 @@ package models.ball;
 
 import java.util.Objects;
 
-import com.fluentinterface.ReflectionBuilder;
-import com.fluentinterface.builder.Builder;
-
 public class PongBall {
 
 	private long id;
@@ -12,20 +9,12 @@ public class PongBall {
 	private int diameter;
 	private BallSpeed ballSpeed;
 
-	public static PongBallBuilder create() {
-		return ReflectionBuilder.implementationFor(PongBallBuilder.class)
-				.create();
-	}
-
-	public interface PongBallBuilder extends Builder<PongBall> {
-
-		public PongBallBuilder withId(long id);
-
-		public PongBallBuilder withDiameter(int diameter);
-
-		public PongBallBuilder withCoordinates(BallCoordinates coordinates);
-
-		public PongBallBuilder withBallSpeed(BallSpeed ballSpeed);
+	public PongBall(long id, BallCoordinates coordinates, int diameter,
+			BallSpeed ballSpeed) {
+		this.id = id;
+		this.coordinates = coordinates;
+		this.diameter = diameter;
+		this.ballSpeed = ballSpeed;
 	}
 
 	public long getId() {

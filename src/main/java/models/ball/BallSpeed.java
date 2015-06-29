@@ -1,22 +1,13 @@
 package models.ball;
 
-import com.fluentinterface.ReflectionBuilder;
-import com.fluentinterface.builder.Builder;
-
 public class BallSpeed {
 
 	private int deltaX = -1;
 	private int deltaY = 1;
 
-	public static BallSpeedBuilder create() {
-		return ReflectionBuilder.implementationFor(BallSpeedBuilder.class)
-				.create();
-	}
-
-	public interface BallSpeedBuilder extends Builder<BallSpeed> {
-		public BallSpeedBuilder withDeltaX(int deltaX);
-
-		public BallSpeedBuilder withDeltaY(int deltaY);
+	public BallSpeed(int deltaX, int deltaY) {
+		this.deltaX = deltaX;
+		this.deltaY = deltaY;
 	}
 
 	public int getDeltaX() {

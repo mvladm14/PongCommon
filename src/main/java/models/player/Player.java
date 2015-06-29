@@ -2,39 +2,22 @@ package models.player;
 
 import java.util.Objects;
 
-import models.phone.PhoneSensors;
-
-import com.fluentinterface.ReflectionBuilder;
-import com.fluentinterface.builder.Builder;
-
 public class Player {
 
 	private long id;
 	private String username;
-	private PhoneSensors phoneSensors;
 	private int score;
 	private boolean canHitBall;
 	private HittableRegion hittableRegion;
 
-	public static PlayerBuilder create() {
-		return ReflectionBuilder.implementationFor(PlayerBuilder.class)
-				.create();
+	public Player(long id, String username, int score, boolean canHitBall,
+			HittableRegion hittableRegion) {
+		this.id = id;
+		this.username = username;
+		this.score = score;
+		this.canHitBall = canHitBall;
+		this.hittableRegion = hittableRegion;
 	}
-
-	public interface PlayerBuilder extends Builder<Player> {
-		public PlayerBuilder withUsername(String username);
-
-		public PlayerBuilder withPhoneSensors(
-				PhoneSensors phoneSensors);
-
-		public PlayerBuilder withId(long id);
-
-		public PlayerBuilder withScore(int score);
-
-		public PlayerBuilder withCanHitBall(boolean canHitBall);
-		
-		public PlayerBuilder withHittableRegion(HittableRegion hittableRegion);
-	}	
 
 	public HittableRegion getHittableRegion() {
 		return hittableRegion;
@@ -60,14 +43,6 @@ public class Player {
 		this.canHitBall = canHitBall;
 	}
 
-	public PhoneSensors getPhoneSensors() {
-		return phoneSensors;
-	}
-
-	public void setPhoneSensors(PhoneSensors phoneSensors) {
-		this.phoneSensors = phoneSensors;
-	}
-
 	public long getId() {
 		return id;
 	}
@@ -86,15 +61,13 @@ public class Player {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(getUsername(), getPhoneSensors(), getScore());
+		return Objects.hash(getUsername(), getScore());
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		return (obj instanceof PhoneSensors)
+		return (obj instanceof Player)
 				&& Objects.equals(getUsername(), ((Player) obj).getUsername())
-				&& Objects.equals(getPhoneSensors(),
-						((Player) obj).getPhoneSensors())
 				&& Objects.equals(getScore(), ((Player) obj).getScore());
 	}
 }

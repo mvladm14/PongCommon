@@ -2,36 +2,26 @@ package models.ball;
 
 import java.util.Objects;
 
-import com.fluentinterface.ReflectionBuilder;
-import com.fluentinterface.builder.Builder;
-
 public class BallCoordinates {
 
 	private int x;
 	private int y;
-
-	public static CoordinatesBuilder create() {
-		return ReflectionBuilder.implementationFor(CoordinatesBuilder.class)
-				.create();
-	}
-
-	public interface CoordinatesBuilder extends Builder<BallCoordinates> {
-
-		public CoordinatesBuilder withX(int x);
-
-		public CoordinatesBuilder withY(int y);
+	
+	public BallCoordinates(int x, int y) {
+		this.x = x;
+		this.y = y;
 	}
 
 	public int getX() {
 		return x;
 	}
 
-	public void setX(int x) {
-		this.x = x;
-	}
-
 	public int getY() {
 		return y;
+	}
+
+	public void setX(int x) {
+		this.x = x;
 	}
 
 	public void setY(int y) {
@@ -49,7 +39,7 @@ public class BallCoordinates {
 				&& Objects.equals(getX(), ((BallCoordinates) obj).getX())
 				&& Objects.equals(getY(), ((BallCoordinates) obj).getY());
 	}
-	
+
 	@Override
 	public String toString() {
 		return "x: " + x + " y: " + y;

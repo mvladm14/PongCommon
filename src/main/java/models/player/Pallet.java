@@ -11,7 +11,7 @@ public class Pallet {
 		this.dimension = dimension;
 	}
 
-	public void updatePosition(float y, long timestamp) {
+	public void updatePosition(float y) {
 		float yCoordinates = coordinates.getY();
 		yCoordinates += y;
 		coordinates.setY(yCoordinates);
@@ -21,7 +21,7 @@ public class Pallet {
 		float xOrientation = orientation[0] > 0 ? -1f : 1f;
 		float y = this.getCoordinates().getY()
 				+ ((MAX_DEGREE - Math.abs(orientation[1])) * xOrientation)
-				/ 100f;
+				/ 33f;
 		this.getCoordinates().setY(y);
 
 	}
