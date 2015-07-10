@@ -6,9 +6,15 @@ public class Pallet {
 	private Dimension dimension;
 	private static final float MAX_DEGREE = 90f;
 
+	private float velocity = 0f;
+	private float distance = 0f;
+
+	private long lastTimeStamp;
+
 	public Pallet(Coordinates coordinates, Dimension dimension) {
 		this.coordinates = coordinates;
 		this.dimension = dimension;
+		lastTimeStamp = 0;
 	}
 
 	public void updatePosition(float y) {
@@ -42,22 +48,51 @@ public class Pallet {
 		this.dimension = dimension;
 	}
 
+	public long getLastTimeStamp() {
+		return lastTimeStamp;
+	}
+
+	public void setLastTimeStamp(long lastTimeStamp) {
+		this.lastTimeStamp = lastTimeStamp;
+	}
+
 	@Override
 	public String toString() {
 		return "[Pallet]: " + coordinates.toString() + " "
 				+ dimension.toString();
 	}
 
-	public void resolveCollisionWithBounds(Screen screen) {
+	public boolean resolveCollisionWithBounds(Screen screen) {
+		boolean hitBounds = false;
 		if (this.getCoordinates().getY() < 0) {
 			this.getCoordinates().setY(0);
+			hitBounds = true;
 		}
 
 		if (this.getCoordinates().getY() + this.getDimension().getHeight() > screen
 				.getHeight()) {
 			this.getCoordinates().setY(
 					screen.getHeight() - this.getDimension().getHeight());
+			hitBounds = true;
 		}
+		return hitBounds;
 
 	}
+
+	public float getVelocity() {
+		return velocity;
+	}
+
+	public void setVelocity(float velocity) {
+		this.velocity = velocity;
+	}
+
+	public float getDistance() {
+		return distance;
+	}
+
+	public void setDistance(float distance) {
+		this.distance = distance;
+	}
+
 }

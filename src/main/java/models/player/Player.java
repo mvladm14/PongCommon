@@ -2,6 +2,9 @@ package models.player;
 
 import java.util.Objects;
 
+import com.fluentinterface.ReflectionBuilder;
+import com.fluentinterface.builder.Builder;
+
 public class Player {
 
 	private long id;
@@ -9,14 +12,25 @@ public class Player {
 	private int score;
 	private boolean canHitBall;
 	private HittableRegion hittableRegion;
+	private boolean canPlay;
 
-	public Player(long id, String username, int score, boolean canHitBall,
-			HittableRegion hittableRegion) {
-		this.id = id;
-		this.username = username;
-		this.score = score;
-		this.canHitBall = canHitBall;
-		this.hittableRegion = hittableRegion;
+	public static PlayerBuilder create() {
+		return ReflectionBuilder.implementationFor(PlayerBuilder.class)
+				.create();
+	}
+
+	public interface PlayerBuilder extends Builder<Player> {
+		public PlayerBuilder withId(int id);
+
+		public PlayerBuilder withUsername(String username);
+
+		public PlayerBuilder withScore(int score);
+
+		public PlayerBuilder withCanHitBall(boolean canHitBall);
+
+		public PlayerBuilder withHittableRegion(HittableRegion hittableRegion);
+
+		public PlayerBuilder withCanPlay(boolean canPlay);
 	}
 
 	public HittableRegion getHittableRegion() {
@@ -57,6 +71,14 @@ public class Player {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public boolean canPlay() {
+		return canPlay;
+	}
+
+	public void setCanPlay(boolean canPlay) {
+		this.canPlay = canPlay;
 	}
 
 	@Override
