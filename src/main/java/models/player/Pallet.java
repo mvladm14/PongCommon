@@ -4,10 +4,11 @@ public class Pallet {
 
 	private Coordinates coordinates;
 	private Dimension dimension;
-	private static final float MAX_DEGREE = 90f;
 
 	private float velocity = 0f;
 	private float distance = 0f;
+	
+	private int errorCounter = 0;
 
 	private long lastTimeStamp;
 
@@ -21,15 +22,6 @@ public class Pallet {
 		float yCoordinates = coordinates.getY();
 		yCoordinates += y;
 		coordinates.setY(yCoordinates);
-	}
-
-	public void updatePosition(float[] orientation) {
-		float xOrientation = orientation[0] > 0 ? -1f : 1f;
-		float y = this.getCoordinates().getY()
-				+ ((MAX_DEGREE - Math.abs(orientation[1])) * xOrientation)
-				/ 33f;
-		this.getCoordinates().setY(y);
-
 	}
 
 	public Coordinates getCoordinates() {
@@ -94,5 +86,15 @@ public class Pallet {
 	public void setDistance(float distance) {
 		this.distance = distance;
 	}
+
+	public int getErrorCounter() {
+		return errorCounter;
+	}
+
+	public void setErrorCounter(int errorCounter) {
+		this.errorCounter = errorCounter;
+	}
+	
+	
 
 }

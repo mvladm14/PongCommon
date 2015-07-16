@@ -12,7 +12,7 @@ public class Player {
 	private int score;
 	private boolean canHitBall;
 	private HittableRegion hittableRegion;
-	private boolean canPlay;
+	private PlayerState playerState;
 
 	public static PlayerBuilder create() {
 		return ReflectionBuilder.implementationFor(PlayerBuilder.class)
@@ -30,7 +30,7 @@ public class Player {
 
 		public PlayerBuilder withHittableRegion(HittableRegion hittableRegion);
 
-		public PlayerBuilder withCanPlay(boolean canPlay);
+		public PlayerBuilder withPlayerState(PlayerState playerState);
 	}
 
 	public HittableRegion getHittableRegion() {
@@ -71,14 +71,14 @@ public class Player {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}	
+
+	public PlayerState getPlayerState() {
+		return playerState;
 	}
 
-	public boolean canPlay() {
-		return canPlay;
-	}
-
-	public void setCanPlay(boolean canPlay) {
-		this.canPlay = canPlay;
+	public void setPlayerState(PlayerState playerState) {
+		this.playerState = playerState;
 	}
 
 	@Override
@@ -91,5 +91,11 @@ public class Player {
 		return (obj instanceof Player)
 				&& Objects.equals(getUsername(), ((Player) obj).getUsername())
 				&& Objects.equals(getScore(), ((Player) obj).getScore());
+	}
+
+	@Override
+	public String toString() {
+		return "[PLAYER] " + this.id + " " + this.username + " "
+				+ this.playerState.toString();
 	}
 }
